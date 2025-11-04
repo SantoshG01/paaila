@@ -6,10 +6,11 @@ import Product from "@/lib/modals/Product"; // your Mongoose model
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { category: string } }
+  { params }: { params: Promise<{ category: string }> }
 ) {
   try {
-    const category = decodeURIComponent(params.category);
+    const { category: rawCategory } = await params;
+    const category = decodeURIComponent(rawCategory);
 
     if (!category) {
       return NextResponse.json({ error: 'Category is required' }, { status: 400 });
