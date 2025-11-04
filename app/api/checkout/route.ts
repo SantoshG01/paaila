@@ -42,8 +42,8 @@ export async function POST(req: NextRequest) {
       payment_method_types: ['card'],
       line_items,
       mode: 'payment',
-      success_url: 'http://localhost:3000/success',
-      cancel_url: 'http://localhost:3000/cancel',
+      success_url: 'https://paaila-dg5p.vercel.app/success',
+      cancel_url: 'https://paaila-dg5p.vercel.app/cancel',
     });
 
     return NextResponse.json({ url: session.url });
